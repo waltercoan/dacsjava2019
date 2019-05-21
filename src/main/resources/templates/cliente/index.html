@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<table class="table">
+			<thead class="thead-light"> 
+				<tr>
+					<th scope="col">Nome</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr scope="row" th:each="umcliente : ${clientes}">
+					<td th:text="${umcliente.nome}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
