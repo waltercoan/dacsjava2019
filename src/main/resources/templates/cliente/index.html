@@ -12,6 +12,7 @@
 						<th scope="col">Nome</th>
 						<th scope="col">Endereço</th>
 						<th scope="col">Data Nascimento</th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -19,6 +20,7 @@
 						<td th:text="${umcliente.nome}"></td>
 						<td th:text="${umcliente.endereco}"></td>
 						<td th:text="${umcliente.dataNascimento}"></td>
+						<td><a th:href="@{'/cliente/alterar/' + ${umcliente.id}}" class="btn btn-primary btn-lg">Excluir</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -26,3 +28,9 @@
 		<div th:include="layout :: footer" id="footer">(footer)</div>
 	</body>
 </html>
+
+
+
+
+
+
