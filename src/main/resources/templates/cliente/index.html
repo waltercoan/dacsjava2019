@@ -6,7 +6,7 @@
 			<nav th:replace="layout :: menu">(menu)</nav>
 			<a href="form.html" th:href="@{/cliente/novo}" 
 				class="btn btn-primary btn-lg" role="button">Novo</a>
-			<table class="table">
+			<table class="table" id="clientes">
 				<thead class="thead-light"> 
 					<tr>
 						<th scope="col">Nome</th>
@@ -20,12 +20,34 @@
 						<td th:text="${umcliente.nome}"></td>
 						<td th:text="${umcliente.endereco}"></td>
 						<td th:text="${umcliente.dataNascimento}"></td>
-						<td><a th:href="@{'/cliente/alterar/' + ${umcliente.id}}" class="btn btn-primary btn-lg">Excluir</a></td>
+						<td><a th:href="@{'/cliente/alterar/' + ${umcliente.id}}" class="btn btn-primary btn-lg">Alterar</a>
+						<button class='btn btn-primary btn-lg js-delete' 
+						th:data-customer-id="${umcliente.id}">Delete</button></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div th:include="layout :: footer" id="footer">(footer)</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$("#clientes").on("click", ".js-delete", function () {
+		            var button = $(this);
+		
+		            bootbox.confirm("Confirma a exclusão do cliente?", function (result) {
+		                if (result) {
+		                    $.ajax({
+		                        url: "/cliente/remover/" + button.attr("data-customer-id"),
+		                        method: "GET",
+		                        success: function () {
+		                        	window.location.href = "/cliente/"
+		                        }
+		                    });
+		                }
+		            });
+		        });
+			});
+		</script>
 	</body>
 </html>
 

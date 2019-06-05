@@ -42,7 +42,11 @@ public class ClienteController {
 		return new ModelAndView("cliente/form","cliente",cliente);
 	}
 	
-	
+	@GetMapping(value="/remover/{id}")
+	public ModelAndView remove(@PathVariable("id") Cliente cliente) {
+		service.remove(cliente);
+		return new ModelAndView("redirect:/cliente");
+	}
 }
 
 
