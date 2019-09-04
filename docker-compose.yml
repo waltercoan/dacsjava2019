@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+   dacs2019walter:
+     depends_on:
+       - dbwalter  
+     image: dacs2019walter:latest
+     ports:
+       - "8080:8080"
+     restart: always
+     environment:
+       - SPRING_PROFILES_ACTIVE=prod
+       - DACS2019_DB_HOST=jdbc:mysql://dbwalter:3306/dacsjava2019?useTimezone=true&serverTimezone=UTC
+       - DACS2019_DB_USERNAME=bob
+       - DACS2019_DB_PASSWORD=bob
+   dbwalter:
+     image: mysql:5.7
+     restart: always
+#     ports:
+#       - "3306:3306"
+     environment:
+       MYSQL_ROOT_PASSWORD: univille
+       MYSQL_DATABASE: dacsjava2019
+       MYSQL_USER: bob
+       MYSQL_PASSWORD: bob

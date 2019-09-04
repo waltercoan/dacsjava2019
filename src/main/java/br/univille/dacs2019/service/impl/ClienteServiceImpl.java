@@ -31,7 +31,6 @@ public class ClienteServiceImpl implements ClienteService{
 		clienteRepository.delete(cliente);
 	}
 
-	@Override
 	public Cliente findById(long id) {
 		Optional<Cliente> retorno = clienteRepository.findById(id);
 		if(retorno.isPresent())

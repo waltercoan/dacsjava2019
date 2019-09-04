@@ -31,7 +31,6 @@ public class ClienteControllerAPI {
 			lista = service.getAll();
 		}catch (Exception e) {
 			System.err.println(e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 		
 		return new ResponseEntity<List<Cliente>>(lista,HttpStatus.OK);
